@@ -1,0 +1,23 @@
+# --- Nunca subir esto a GitHub ----------------------------------------
+# Si algún día pones tus keys directo en un archivo .env, ignóralo:
+.env
+*.env
+
+# Datos personales que Jarvis guarda en tu compu (recordatorios, calendario,
+# historial de conversación, perfil): son tuyos, no de quien clone el repo.
+jarvis_historial.json
+perfil_usuario.json
+recordatorios.json
+calendario.json
+
+# La carpeta de datos que usa jarvis_acciones.py (CARPETA_DATOS_LOCAL)
+# por si alguna vez queda dentro del proyecto en vez de en %LOCALAPPDATA%
+/Jarvis/
+
+# --- Basura estándar de Python -----------------------------------------
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+jarvis_env/

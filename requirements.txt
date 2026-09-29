@@ -1,0 +1,17 @@
+# --- Necesarias para que Jarvis arranque -----------------------------
+google-genai
+mss
+pillow
+sounddevice
+requests
+edge-tts        # voz natural (texto a voz)
+pygame          # reproducir el audio generado por edge-tts
+
+# --- Opcionales: cada función avisa si falta la suya, en vez de tronar
+psutil          # ver procesos / uso de CPU y RAM
+pyperclip       # leer el portapapeles
+pyautogui       # simular teclas / clics (control del sistema)
+pydirectinput   # como pyautogui, pero más confiable para juegos
+wmi             # info extendida del sistema (Windows)
+pywin32         # da el módulo "winreg" y utilidades de Windows
+numpy           # usado por test_mic.py para medir volumen
