@@ -90,8 +90,7 @@ Jarvis y se interrumpe solo.
 - Agendar recordatorios y eventos (con calendario local, persiste entre sesiones)
 - Consultar el clima real de cualquier ciudad
 - Leer el portapapeles
-- **Modo estudio**: silencia notificaciones, pone música, abre Word y el
-  campus virtual, y programa un descanso — se activa por voz o con 2 aplausos
+- **Modo estudio**: silencia notificaciones, pone música, abre Word y (opcional) campus universitario, y programa un descanso — se activa por voz o con 2 aplausos
 - Comandos básicos de control en juegos (moverse, saltar, mirar, etc.)
 
 ## Notas técnicas
