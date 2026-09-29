@@ -1,4 +1,4 @@
-# J.A.R.V.I.S. personal
+# J.A.V.I.E.R. personal v1.0
 
 Asistente por voz que ve tu pantalla en tiempo real, te responde hablando,
 y puede controlar tu compu: abrir/cerrar apps, buscar en el navegador,
@@ -105,3 +105,6 @@ Jarvis y se interrumpe solo.
 - Los datos personales (`jarvis_historial.json`, `perfil_usuario.json`,
   recordatorios y calendario) se guardan localmente en tu equipo y **no**
   se suben al repo (ver `.gitignore`).
+
+  ES EDITABLE AWA
+  
