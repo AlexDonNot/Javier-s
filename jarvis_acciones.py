@@ -388,6 +388,10 @@ PERFIL_POR_DEFECTO = {
     "ciudad_clima": "Lima,PE",
     "apps_favoritas": [],
     "rutinas": {},
+    # Edita esto con el link de TU campus virtual (o déjalo vacío "" si
+    # no quieres que el modo estudio intente abrir nada). No va en el
+    # código para no dejarlo público si subes el proyecto a GitHub.
+    "campus_virtual_url": "",
 }
 
 
@@ -978,10 +982,6 @@ def jugar_hotbar(numero) -> str:
 
 
 # --- Modo estudio (por voz: "modo tryhard"/"modo estudio", o por 2 aplausos) ---
-_ULTIMA_ACTIVACION_MODO_ESTUDIO = 0.0
-_COOLDOWN_MODO_ESTUDIO_SEG = 30.0  # evita reabrir todo si se llama 2 veces seguidas
-
-
 def activar_modo_estudio() -> str:
     """
     Activa el 'modo estudio': silencia notificaciones, pone música de
@@ -990,17 +990,6 @@ def activar_modo_estudio() -> str:
     descanso en 25 minutos. Úsala cuando el usuario diga 'modo estudio',
     'modo tryhard', 'ponme a estudiar' o algo similar.
     """
-    global _ULTIMA_ACTIVACION_MODO_ESTUDIO
-
-    ahora = time.monotonic()
-    segundos_desde_ultima = ahora - _ULTIMA_ACTIVACION_MODO_ESTUDIO
-    if segundos_desde_ultima < _COOLDOWN_MODO_ESTUDIO_SEG:
-        return (
-            "El modo estudio ya está activo (lo prendí hace un momento), "
-            "no voy a volver a abrir todo de nuevo."
-        )
-    _ULTIMA_ACTIVACION_MODO_ESTUDIO = ahora
-
     try:
         modo_no_molestar(True)
 
@@ -1009,19 +998,20 @@ def activar_modo_estudio() -> str:
         time.sleep(0.4)
         webbrowser.open_new("https://www.office.com/launch/word")
 
-        time.sleep(0.4)
-        webbrowser.open_new(
-            "https://virtual.autonoma.edu.pe/Campus/Login.aspx#autonoma"
-        )
+        campus_url = PERFIL.get("campus_virtual_url", "").strip()
+        if campus_url:
+            time.sleep(0.4)
+            webbrowser.open_new(campus_url)
 
         configurar_recordatorio(
             25, "Llevas 25 minutos estudiando, tómate un descanso corto."
         )
 
+        mensaje_campus = " el campus virtual abierto," if campus_url else ""
         return (
             "Modo estudio activado: notificaciones en silencio, música "
             "de Laufey sonando, documento en blanco abierto para tus "
-            "notas, el campus virtual abierto y un recordatorio de "
+            f"notas,{mensaje_campus} y un recordatorio de "
             "descanso en 25 minutos."
         )
     except Exception as e:
